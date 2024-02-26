@@ -31,7 +31,7 @@ public class InstructorRestController {
     @GetMapping
     public Page<InstructorDto> searchInstructors(@RequestParam(name = "keyword", defaultValue = "") String keyword,
                                                  @RequestParam(value = "page", defaultValue = "0") int page,
-                                                 @RequestParam(value = "size", defaultValue = "10") int size) {
+                                                 @RequestParam(value = "size", defaultValue = "6") int size) {
 
         return instructorService.findInstructorsByName(keyword, page, size);
     }

@@ -27,4 +27,8 @@ export class CoursesService {
   public updateCourse(course:Course, courseId:number): Observable<Course> {
     return this.http.put<Course>(environment.backendHost + "/courses/"+courseId, course);
   }
+
+  public getCoursesByInstructor(instructorId:number, currentPage:number, pageSize:number): Observable<PageResponse<Course>> {
+    return this.http.get<PageResponse<Course>>(environment.backendHost + "/instructors/"+instructorId+"/courses?page="+currentPage+"&size="+pageSize);
+  }
 }
