@@ -19,7 +19,7 @@ public class CourseRestController {
     @GetMapping
     public Page<CourseDto> searchCourses(@RequestParam(name = "keyword", defaultValue= "") String keyword,
                                          @RequestParam(name = "page", defaultValue = "0") int page,
-                                         @RequestParam(name = "size", defaultValue = "6") int size){
+                                         @RequestParam(name = "size", defaultValue = "10") int size){
 
         return courseService.findCoursesByCourseName(keyword, page, size);
 

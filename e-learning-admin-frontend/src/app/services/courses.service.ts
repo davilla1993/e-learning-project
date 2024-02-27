@@ -32,5 +32,15 @@ export class CoursesService {
     return this.http.get<PageResponse<Course>>(environment.backendHost + "/instructors/"+instructorId+"/courses?page="+currentPage+"&size="+pageSize);
   }
 
-  
+  public getCoursesByStudent(studentId: number, currentPage: number, pageSize: number): Observable<PageResponse<Course>> {
+    return this.http.get<PageResponse<Course>>(environment.backendHost + "/students/"+studentId+"/courses?page="+currentPage+"&size="+pageSize);
+  }
+
+  public getNonEnrolledInCoursesByStudent(studentId:number, currentPage: number, pageSize: number): Observable<PageResponse<Course>> {
+    return this.http.get<PageResponse<Course>>(environment.backendHost + "/students/"+ studentId + "/other-courses?page="+currentPage+"&size="+pageSize);
+  }
+
+  public enrollStudentInCourse(courseId:number, studentId:number){
+    return this.http.post(environment.backendHost + "/courses/" +courseId+ "/enroll/students/" +studentId, null);
+  }
 }

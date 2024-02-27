@@ -23,7 +23,7 @@ export class CoursesComponent implements OnInit {
   pageCourses$!: Observable<PageResponse<Course>>;
   instructors$!: Observable<Instructor[]>;
   currentPage:number = 0;
-  pageSize: number = 6;
+  pageSize: number = 10;
   errorMessage!: string;
   errorInstructorMessage!: string;
   submitted: boolean = false;
@@ -31,7 +31,7 @@ export class CoursesComponent implements OnInit {
 
 
   constructor(private modalService: NgbModal, private fb:FormBuilder,
-                                private courseService: CoursesService, 
+                                private courseService: CoursesService,
                                 private InstructorsService: InstructorsService) {
   }
 
@@ -128,10 +128,10 @@ export class CoursesComponent implements OnInit {
   onUpdateCourse(updateModal: any) {
     this.submitted = true;
     if(this.updateCourseFormGroup.invalid) return;
-    this.courseService.updateCourse(this.updateCourseFormGroup.value, 
+    this.courseService.updateCourse(this.updateCourseFormGroup.value,
                     this.updateCourseFormGroup.value.courseId).subscribe({
-          
-                      next: () => { 
+
+                      next: () => {
                         alert("Success updating course");
                         this.handleSearchCourses();
                         this.submitted = false;

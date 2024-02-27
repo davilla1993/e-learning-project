@@ -36,7 +36,7 @@ public class MyRunner implements CommandLineRunner {
       //  createRoles();
       //  createAdmin();
       //  createInstructors();
-      //  createCourses();
+       // createCourses();
      //    StudentDto student = createStudent();
       //   assignCourseToStudent(student);
       //     createStudents();
@@ -66,6 +66,19 @@ public class MyRunner implements CommandLineRunner {
     }
 
     private void createCourses() {
+        String[] courses = {"Java", "Angular", "Reactjs", "Spring", "Hibernate", "Nodejs", "Expressjs", "MongoDB", "Mysql"};
+        for(int i = 0; i <= courses.length-1; i++) {
+            CourseDto courseDto = new CourseDto();
+            courseDto.setCourseName(courses[i]);
+            courseDto.setCourseDuration(i+5+"Hours");
+            courseDto.setCourseDescription("Become a master in "+courses[i]+" from scratch");
+            InstructorDto instructorDto = new InstructorDto();
+            instructorDto.setInstructorId(14L);
+            courseDto.setInstructor(instructorDto);
+            courseService.createCourse(courseDto);
+
+        }
+
         /*for(int i = 0; i < 5; i++) {
            CourseDto courseDto = new CourseDto();
            courseDto.setCourseName("Java"+i);
@@ -77,7 +90,7 @@ public class MyRunner implements CommandLineRunner {
            courseService.createCourse(courseDto);
 
         }*/
-        for(int i = 6; i < 17; i++) {
+        /*for(int i = 6; i < 17; i++) {
             CourseDto courseDto = new CourseDto();
             courseDto.setCourseName("Angular"+i);
             courseDto.setCourseDuration(i+"Hours");
@@ -87,7 +100,7 @@ public class MyRunner implements CommandLineRunner {
             courseDto.setInstructor(instructorDto);
             courseService.createCourse(courseDto);
 
-        }
+        }*/
 
         for(int i = 6; i < 19; i++) {
             CourseDto courseDto = new CourseDto();
