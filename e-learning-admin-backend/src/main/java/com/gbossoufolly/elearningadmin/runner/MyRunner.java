@@ -33,13 +33,13 @@ public class MyRunner implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-      //  createRoles();
-      //  createAdmin();
-      //  createInstructors();
-       // createCourses();
-     //    StudentDto student = createStudent();
-      //   assignCourseToStudent(student);
-      //     createStudents();
+    //    createRoles();
+    //    createAdmin();
+    //    createInstructors();
+    //    createCourses();
+    //     StudentDto student = studentService.loadStudentByEmail("student@gmail.com");
+    //     assignCourseToStudent(student);
+    //     createStudents();
     }
     private void createRoles() {
         Arrays.asList("ADMIN", "INSTRUCTOR", "STUDENT")
@@ -73,7 +73,7 @@ public class MyRunner implements CommandLineRunner {
             courseDto.setCourseDuration(i+5+"Hours");
             courseDto.setCourseDescription("Become a master in "+courses[i]+" from scratch");
             InstructorDto instructorDto = new InstructorDto();
-            instructorDto.setInstructorId(14L);
+            instructorDto.setInstructorId(1L);
             courseDto.setInstructor(instructorDto);
             courseService.createCourse(courseDto);
 
