@@ -9,10 +9,8 @@ import com.gbossoufolly.elearningadmin.services.UserService;
 import org.springframework.data.domain.Page;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-
 @RestController
 @RequestMapping("/students")
-@CrossOrigin("*")
 public class StudentRestController {
     private final StudentService studentService;
     private final UserService userService;
@@ -64,7 +62,7 @@ public class StudentRestController {
 
     @GetMapping("/{studentId}/other-courses")
     @PreAuthorize("hasAuthority('STUDENT')")
-    public Page<CourseDto> otherCoursesByStudentId(@PathVariable("studentId") Long studentId,
+    public Page<CourseDto> nonSubscribedCoursesByStudentId(@PathVariable("studentId") Long studentId,
                                              @RequestParam(name = "page", defaultValue = "0") int page,
                                              @RequestParam(name = "size", defaultValue = "10") int size) {
 
@@ -80,6 +78,7 @@ public class StudentRestController {
     @DeleteMapping("/{studentId}")
     @PreAuthorize("hasAuthority('ADMIN')")
     public void deleteStudent(@PathVariable("studentId") Long studentId) {
+
         studentService.removeStudent(studentId);
     }
 }

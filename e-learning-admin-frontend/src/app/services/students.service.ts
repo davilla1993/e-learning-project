@@ -13,7 +13,6 @@ export class StudentsService {
   constructor(private http: HttpClient) {
   }
 
-
   public searchStudents(keyword: string, currentPage: number, pageSize: number): Observable<PageResponse<Student>> {
     return this.http.get<PageResponse<Student>>(environment.backendHost + "/students?keyword=" + keyword + "&page=" + currentPage + "&size=" + pageSize);
   }
@@ -25,4 +24,8 @@ export class StudentsService {
   public saveStudent(student: Student): Observable<Student> {
     return this.http.post<Student>(environment.backendHost + "/students", student);
   }
+
+  public loadStudentByEmail(email: string): Observable<Student> {
+      return this.http.get<Student>(environment.backendHost + "/students/find?email="+email);
+    }
 }

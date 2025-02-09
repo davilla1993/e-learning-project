@@ -19,9 +19,7 @@ import java.util.stream.Collectors;
 
 import static com.gbossoufolly.elearningadmin.constants.JWTUtils.AUTH_HEADER;
 import static com.gbossoufolly.elearningadmin.constants.JWTUtils.SECRET;
-
 @RestController
-@CrossOrigin("*")
 public class UserRestController {
 
     private final UserService userService;

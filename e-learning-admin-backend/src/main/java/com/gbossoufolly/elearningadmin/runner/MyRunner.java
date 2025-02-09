@@ -33,13 +33,13 @@ public class MyRunner implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-    //    createRoles();
-    //    createAdmin();
-    //    createInstructors();
-    //    createCourses();
-    //     StudentDto student = studentService.loadStudentByEmail("student@gmail.com");
-    //     assignCourseToStudent(student);
-    //     createStudents();
+    // createRoles();
+    // createAdmin();
+    // createInstructors();
+    // createCourses();
+    // StudentDto student = studentService.loadStudentByEmail("student@gmail.com");
+    // assignCourseToStudent(student);
+    // createStudents();
     }
     private void createRoles() {
         Arrays.asList("ADMIN", "INSTRUCTOR", "STUDENT")
@@ -79,7 +79,7 @@ public class MyRunner implements CommandLineRunner {
 
         }
 
-        /*for(int i = 0; i < 5; i++) {
+        for(int i = 0; i < 5; i++) {
            CourseDto courseDto = new CourseDto();
            courseDto.setCourseName("Java"+i);
            courseDto.setCourseDuration(i+"Hours");
@@ -89,8 +89,9 @@ public class MyRunner implements CommandLineRunner {
            courseDto.setInstructor(instructorDto);
            courseService.createCourse(courseDto);
 
-        }*/
-        /*for(int i = 6; i < 17; i++) {
+        }
+
+        for(int i = 6; i < 17; i++) {
             CourseDto courseDto = new CourseDto();
             courseDto.setCourseName("Angular"+i);
             courseDto.setCourseDuration(i+"Hours");
@@ -100,7 +101,7 @@ public class MyRunner implements CommandLineRunner {
             courseDto.setInstructor(instructorDto);
             courseService.createCourse(courseDto);
 
-        }*/
+        }
 
         for(int i = 6; i < 19; i++) {
             CourseDto courseDto = new CourseDto();

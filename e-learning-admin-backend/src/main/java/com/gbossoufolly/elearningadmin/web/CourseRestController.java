@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/courses")
-@CrossOrigin("*")
 public class CourseRestController {
 
     private final CourseService courseService;
@@ -18,7 +17,7 @@ public class CourseRestController {
     }
 
     @GetMapping
-    @PreAuthorize("hasAuthority('ADMIN')")
+   @PreAuthorize("hasAuthority('ADMIN')")
     public Page<CourseDto> searchCourses(@RequestParam(name = "keyword", defaultValue= "") String keyword,
                                          @RequestParam(name = "page", defaultValue = "0") int page,
                                          @RequestParam(name = "size", defaultValue = "10") int size){

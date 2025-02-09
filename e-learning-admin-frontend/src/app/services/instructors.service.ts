@@ -27,4 +27,8 @@ export class InstructorsService {
   public saveInstructor(instructor: Instructor): Observable<Instructor> {
     return this.http.post<Instructor>(environment.backendHost + "/instructors", instructor);
   }
+
+  public loadInstructorByEmail(email: string): Observable<Instructor> {
+    return this.http.get<Instructor>(environment.backendHost + "/instructors/find?email="+email);
+  }
 }

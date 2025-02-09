@@ -15,7 +15,6 @@ public class UserServiceImpl implements UserService {
 
     private final UserDao userDao;
     private final RoleDao roleDao;
-
     private final PasswordEncoder passwordEncoder;
 
     public UserServiceImpl(UserDao userDao, RoleDao roleDao, PasswordEncoder passwordEncoder) {

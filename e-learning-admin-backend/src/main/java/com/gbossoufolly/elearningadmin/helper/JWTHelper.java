@@ -15,6 +15,7 @@ import static com.gbossoufolly.elearningadmin.constants.JWTUtils.*;
 public class JWTHelper {
 
     Algorithm algorithm = Algorithm.HMAC256(SECRET);
+
     public String generateAccessToken(String email, List<String> roles) {
         return JWT.create()
                 .withSubject(email)
