@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { LoggedUser } from 'src/app/models/logged-user.model';
 import { AuthService } from 'src/app/services/auth.service';
@@ -8,7 +8,7 @@ import { AuthService } from 'src/app/services/auth.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit, OnDestroy {
 
   userSub!:Subscription;
   isAuthenticated = false;
@@ -30,6 +30,7 @@ export class NavbarComponent implements OnInit {
     })
   }
 
+
   setRole(loggedUser: LoggedUser | null) {
     if(loggedUser?.roles.includes("ADMIN")) this.isAdmin = true;
     else if(!!loggedUser?.instructor) {
@@ -48,4 +49,9 @@ export class NavbarComponent implements OnInit {
     this.isStudent = false;
   }
 
+  ngOnDestroy(): void {
+    if (this.userSub) {
+      this.userSub.unsubscribe();
+    }
+  }
 }
