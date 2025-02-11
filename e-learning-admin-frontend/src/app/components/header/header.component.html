@@ -22,11 +22,6 @@
                 {{name}}</a>
               </li>
 
-              <li>
-                <a class="cursor-pointer"><i class="fa-solid fa-circle-user"></i>
-                Admin</a>
-              </li>
-
               <li *ngIf="isAuthenticated"><a (click)="logout()" class="cursor-pointer"><i class="fa-solid fa-right-from-bracket"></i>&nbsp; Signout</a>
               <li *ngIf="!isAuthenticated"><a routerLink="/auth"><i class="fa-solid fa-right-from-bracket"></i>&nbsp; Login</a>
               </li>
