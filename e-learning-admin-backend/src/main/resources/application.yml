@@ -1,0 +1,19 @@
+server:
+  port: 8082
+spring:
+  application:
+    name: elearning_backend
+  datasource:
+    url: jdbc:mysql://localhost:3306/elearning
+    username: root
+    password: toor@toor
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+  show-sql: true
+
+logging:
+  file:
+    name: ./logs/${spring.application.name}.log
+

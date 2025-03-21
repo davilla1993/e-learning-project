@@ -1,0 +1,41 @@
+services:
+  loki:
+    image: grafana/loki:3.3.1
+    container_name: loki
+    restart: unless-stopped
+    ports:
+      - "29100:3100"
+    command: -config.file=/etc/loki/local-config.yaml
+    volumes:
+      - ./data/loki:/loki
+      - ./configurations/loki/local-config.yml:/etc/loki/local-config.yml
+    networks:
+      - applications-network
+  alloy:
+    image: grafana/alloy:v1.6.1
+    container_name: alloy
+    restart: unless-stopped
+    ports:
+      - "29145:12345"
+    command: run --server.http.listen-addr=0.0.0.0:12345 --storage.path=/var/lib/alloy/data /etc/alloy/config.alloy
+    volumes:
+      - ./configurations/alloy/config.alloy:/etc/alloy/config.alloy
+      - ./data/loki:/loki
+      - ../logs:/tmp/logs
+    networks:
+      - applications-network
+  grafana:
+    image: grafana/grafana:11.4.0
+    container_name: grafana
+    restart: unless-stopped
+    ports:
+      - "29000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    volumes:
+      - ./data/grafana:/var/lib/grafana
+    networks:
+      - applications-network
+networks:
+  applications-network:
+    name: applications-network
